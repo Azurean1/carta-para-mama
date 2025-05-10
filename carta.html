@@ -6,7 +6,7 @@
   <style>
     body {
       margin: 0;
-      background: #f8e1e7;
+      background: #fbeaea;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -14,71 +14,87 @@
       font-family: 'Arial', sans-serif;
     }
 
-    .envelope {
+    .container {
+      position: relative;
       width: 300px;
       height: 200px;
-      background: #ff6b81;
-      position: relative;
-      perspective: 1000px;
       cursor: pointer;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      background: #ff4d5a;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      border-radius: 4px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     .flap {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: #ff4757;
-      transform-origin: bottom;
-      transition: transform 1s;
-      z-index: 2;
-    }
-
-    .letter {
-      position: absolute;
+      background: #ff6b81;
       top: 0;
       left: 0;
+      clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 0, 0 0);
+      transform-origin: top center;
+      transition: transform 0.8s;
+      z-index: 3;
+    }
+
+    .paper {
+      position: absolute;
+      width: 90%;
+      height: 140px;
       background: white;
-      width: 100%;
-      height: 100%;
-      padding: 20px;
+      top: 50%;
+      left: 5%;
+      transform: translateY(50%);
+      padding: 15px;
       box-sizing: border-box;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      transition: transform 1s, opacity 1s;
       opacity: 0;
-      transition: opacity 1s 0.5s;
-      z-index: 1;
+      z-index: 2;
+      border-radius: 5px;
     }
 
-    .envelope.open .flap {
-      transform: rotateX(-180deg);
-    }
-
-    .envelope.open .letter {
-      opacity: 1;
-    }
-
-    .letter h2 {
-      margin-top: 0;
+    .paper h2 {
+      margin: 0;
       color: #333;
     }
 
-    .letter p {
-      font-size: 16px;
+    .paper p {
+      font-size: 14px;
       color: #555;
+    }
+
+    .open .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .open .paper {
+      transform: translateY(-100%);
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-<div class="envelope" onclick="abrirCarta()">
+<div class="container" onclick="abrirCarta()">
+  <div class="envelope"></div>
   <div class="flap"></div>
-  <div class="letter">
-    <h2>Para la mejor mamá 💖</h2>
-    <p>Gracias por todo lo que haces por mí. Te amo muchísimo y eres mi ejemplo. Nunca olvides lo importante que eres para mí.</p>
+  <div class="paper">
+    <h2>Te amo, Mamá 💖</h2>
+    <p>Gracias por tu amor, por cuidarme, por nunca rendirte. Siempre estaré agradecido contigo. Eres lo mejor que tengo.</p>
   </div>
 </div>
 
 <script>
   function abrirCarta() {
-    document.querySelector('.envelope').classList.toggle('open');
+    document.querySelector('.container').classList.toggle('open');
   }
 </script>
 
