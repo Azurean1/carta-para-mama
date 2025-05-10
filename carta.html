@@ -15,9 +15,9 @@
     }
 
     .scene {
-      width: 320px;
-      height: 220px;
-      perspective: 1000px;
+      width: 400px;
+      height: 280px;
+      perspective: 1200px;
     }
 
     .envelope-wrapper {
@@ -36,7 +36,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 8px;
+      border-radius: 10px;
       backface-visibility: hidden;
     }
 
@@ -45,9 +45,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 20px;
+      padding: 30px;
       color: white;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      font-size: 18px;
     }
 
     .front .stamp {
@@ -57,14 +58,11 @@
       font-size: 40px;
     }
 
-    .front .to {
-      font-weight: bold;
-    }
-
     .back {
       background: #ff4d5a;
       transform: rotateY(180deg);
       overflow: hidden;
+      position: relative;
     }
 
     .flap {
@@ -72,47 +70,51 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 50%;
       background: #ff6b81;
-      clip-path: polygon(0 0, 50% 50%, 100% 0);
-      transform-origin: top;
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      transform-origin: top center;
       transition: transform 1s ease;
       z-index: 2;
     }
 
     .scene.open .flap {
-      transform: rotateX(-180deg);
+      transform: rotateX(-160deg);
     }
 
     .paper {
       position: absolute;
-      top: 50%;
+      top: 100%;
       left: 5%;
       width: 90%;
-      height: 150px;
+      height: 180px;
       background: white;
       border-radius: 8px;
-      padding: 15px;
+      padding: 20px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       transform: translateY(0);
       transition: transform 1s ease 1s, opacity 1s ease 1s;
       opacity: 0;
       z-index: 1;
+      overflow-y: auto;
     }
 
     .scene.open .paper {
-      transform: translateY(-90px);
+      transform: translateY(-170px);
       opacity: 1;
     }
 
     .paper h2 {
-      margin: 0 0 10px 0;
+      margin-top: 0;
       color: #333;
+      font-size: 22px;
     }
 
     .paper p {
-      font-size: 14px;
-      color: #555;
+      font-size: 15px;
+      color: #444;
+      margin: 0;
+      line-height: 1.5;
     }
 
   </style>
@@ -121,19 +123,21 @@
 
 <div class="scene" onclick="abrirCarta()">
   <div class="envelope-wrapper">
-    
+    <!-- Cara frontal -->
     <div class="front">
-      <div class="to">Para: <b>Mamá ❤️</b></div>
-      <div class="from" style="margin-top: 10px;">De: <b>Tu hijo</b></div>
+      <div>Para: <b>Mamá ❤️</b></div>
+      <div style="margin-top: 10px;">De: <b>Tu hijo</b></div>
       <div class="stamp">💌</div>
     </div>
 
-    
+    <!-- Parte trasera con sobre abierto -->
     <div class="back">
       <div class="flap"></div>
       <div class="paper">
-        <h2>Te amo, Mamá 💖</h2>
-        <p>Feliz dia mami, hoy es un gran dia para ti, para la mejor mama del mundo, se que no soy mucho de ser cariñoso contigo, pero sabes que te amo demasiado, y siempre sere tu bebe, eres un buen ejemplo de mujer, quiero ser fuerte y trabajador como tu, y no hay maneras ni forma de agradecerte por lo que soy y donde estoy por ti, te amo mucho mami.</p>
+        <h2>Te amo, Mamá 💔</h2>
+        <p>Feliz dia mami, hoy es un gran dia para ti, para la mejor mama del mundo, se que no soy mucho de ser cariñoso contigo, pero sabes que te amo demasiado, y siempre sere tu bebe, eres un buen ejemplo de mujer, quiero ser fuerte y trabajador como tu, y no hay maneras ni forma de agradecerte por lo que soy y donde estoy por ti, te amo mucho mami.
+          
+        </p>
       </div>
     </div>
   </div>
