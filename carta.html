@@ -6,7 +6,7 @@
   <style>
     body {
       margin: 0;
-      background: #fbeaea;
+      background: #fdeef0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -25,44 +25,43 @@
       width: 100%;
       height: 100%;
       background: #ff4d5a;
-      position: relative;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
       border-radius: 4px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
     .flap {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       background: #ff6b81;
-      top: 0;
-      left: 0;
-      clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 0, 0 0);
-      transform-origin: top center;
+      clip-path: polygon(0 0, 50% 50%, 100% 0);
+      transform-origin: top;
       transition: transform 0.8s;
-      z-index: 3;
+      z-index: 2;
     }
 
     .paper {
       position: absolute;
-      width: 90%;
-      height: 140px;
-      background: white;
-      top: 50%;
+      top: 100%;
       left: 5%;
-      transform: translateY(50%);
+      width: 90%;
+      height: 150px;
+      background: white;
+      border-radius: 6px;
       padding: 15px;
-      box-sizing: border-box;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-      transition: transform 1s, opacity 1s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(0);
       opacity: 0;
-      z-index: 2;
-      border-radius: 5px;
+      transition: transform 1s ease, opacity 1s ease;
+      z-index: 0;
     }
 
     .paper h2 {
-      margin: 0;
+      margin-top: 0;
       color: #333;
     }
 
@@ -73,10 +72,11 @@
 
     .open .flap {
       transform: rotateX(-180deg);
+      z-index: 0;
     }
 
     .open .paper {
-      transform: translateY(-100%);
+      transform: translateY(-180px);
       opacity: 1;
     }
   </style>
@@ -88,7 +88,7 @@
   <div class="flap"></div>
   <div class="paper">
     <h2>Te amo, Mamá 💖</h2>
-    <p>Gracias por tu amor, por cuidarme, por nunca rendirte. Siempre estaré agradecido contigo. Eres lo mejor que tengo.</p>
+    <p>Gracias por tu amor, por cuidarme y por nunca rendirte. Siempre estaré agradecido contigo. Eres lo mejor que tengo.</p>
   </div>
 </div>
 
@@ -100,3 +100,4 @@
 
 </body>
 </html>
+
